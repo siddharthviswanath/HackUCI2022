@@ -1,19 +1,49 @@
 import logo from './logo.svg';
 import './App.css';
-import data from './data/results_formatted.json'
+import {  ChakraProvider,
+  Stack,
+  Avatar,
+  AvatarBadge,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  FormLabel,
+  Input,
+  FormHelperText,
+  FormErrorMessage,
+  Switch,
+  InputGroup,
+  InputRightElement,
+  Icon,
+  Button} from '@chakra-ui/react'
+import React from 'react'
+import { ArrowForwardIcon } from '@chakra-ui/icons'
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          What should I major in?
         </p>
-        <span>
-        {data["aerospaceengineering_bs"][2]}
-        </span>
-          
-       
+
+        <p>
+        <ChakraProvider resetCSS>
+          <Button
+            variant="solid"
+            size="lg"
+            rightIcon={<ArrowForwardIcon />}
+            colorScheme="messenger"
+            backgroundColor="messenger.600"
+          >
+            Get Started
+          </Button>
+        </ChakraProvider>
+        </p>
+        
+        
       </header>
     </div>
   );
