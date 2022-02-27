@@ -1,6 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import {Routes,Route } from "react-router-dom";
+import About from './About.js';
+import Questions from './questions.js'
+
 import {  ChakraProvider,
+
   Stack,
   Avatar,
   AvatarBadge,
@@ -22,30 +27,10 @@ import { ArrowForwardIcon } from '@chakra-ui/icons'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          What should I major in?
-        </p>
-
-        <p>
-        <ChakraProvider resetCSS>
-          <Button
-            variant="solid"
-            size="lg"
-            rightIcon={<ArrowForwardIcon />}
-            colorScheme="messenger"
-            backgroundColor="messenger.600"
-          >
-            Get Started
-          </Button>
-        </ChakraProvider>
-        </p>
-        
-        
-      </header>
-    </div>
+      <Routes>
+          <Route path="/" element={<About />} />
+          <Route path="/new" element={<Questions />} />
+      </Routes>
   );
 }
 
