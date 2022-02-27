@@ -1,4 +1,5 @@
-import logo from './logo.svg';
+
+import logo from './UCI_logo.svg';
 import './About.css';
 import {Link } from "react-router-dom";
 
@@ -25,8 +26,11 @@ import React from 'react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 function About() {
   return (
-    <div className="App">
+    <div className="App"
+    
+   >
       <header className="App-header">
+      <img src={logo} className="App-logo" alt="logo" width="300" height="400" color="white" />
         <p>
         <Text fontWeight="bold" fontSize="2xl" color="#ffffff">
           What should I major in?
@@ -53,8 +57,9 @@ function About() {
             size="lg"
             rightIcon={<ArrowForwardIcon />}
             colorScheme="messenger"
-            backgroundColor="messenger.600"
+            backgroundColor="blue"
           >
+            
             Get Started
           </Button>
           </Link>
