@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import {Link } from "react-router-dom";
 import Chips, { Chip } from 'react-chips'
-
+import data from './data/results_formatted.json'
 
 import {  ChakraProvider,
 
@@ -30,14 +30,38 @@ import InputColor from 'react-input-color';
 function Questions() {
     const [item, setItem] = useState([])
     const [input, setInput] = useState('');
-
+    let freqmap = {}
+    let nums = []
     useEffect(() => {
-        console.log(item);
+        // console.log(item);
+        // console.log(data["aerospaceengineering_bs"])
+        item.forEach((word) => {
+            if (word in freqmap) {
+                freqmap[word] += 1
+            } else {
+                freqmap[word] = 1
+            }
+        })
+        let majors = Object.keys(data)
+        majors.forEach((major) => {
+            let keywords = data[major]
+            const filteredArray = keywords.filter(value => item.includes(value));
+            
+            nums.push(filteredArray.length)
+        })
+        let maximum = Math.max(...nums)
+        let index = nums.indexOf(maximum)
+        let major = majors[index]
+        console.log(major)
+
     }, [item]);
 
     function testItem() {
         // item.push("This")
+        // let freqmap = {}
         setItem([...item, input])
+        
+        
 
     }
     function Delete(test){
