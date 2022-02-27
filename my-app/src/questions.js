@@ -24,17 +24,26 @@ import {  ChakraProvider,
   Button} from '@chakra-ui/react'
 import React from 'react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
-import {useState} from 'react'
-
+import {useState, useEffect} from 'react'
+import InputColor from 'react-input-color';
 
 function Questions() {
     const [item, setItem] = useState([])
     const [input, setInput] = useState('');
+
+    useEffect(() => {
+        console.log(item);
+    }, [item]);
+
     function testItem() {
         // item.push("This")
         setItem([...item, input])
-        
+
     }
+    function Delete(test){
+        setItem(test)
+    }
+    
     return (
       <div className="Questions">
         <header className="App-header">
@@ -46,10 +55,11 @@ function Questions() {
           <p>
           <ChakraProvider resetCSS>
             
-              <input value={input} onInput={e => setInput(e.target.value)}/>
+              <input value={input} onInput={e => setInput(e.target.value)} style={{color: 'black'}}/>
+              
             <Button
               variant="solid"
-              size="lg"
+              size="md"
               onClick={testItem}
               rightIcon={<ArrowForwardIcon />}
               colorScheme="messenger"
@@ -60,7 +70,7 @@ function Questions() {
             </Button>
             <Chips
           value={item}
-        //   onChange={this.onChange}
+          onChange={Delete}
           suggestions={["Your", "Data", "Here"]}
  
         />
